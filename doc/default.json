@@ -1,0 +1,109 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Simple API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "\/profile": {
+            "get": {
+                "operationId": null,
+                "responses": {
+                    "default": {
+                        "description": ""
+                    }
+                }
+            },
+            "head": {
+                "operationId": null,
+                "responses": {
+                    "default": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "\/society": {
+            "post": {
+                "operationId": null,
+                "requestBody": {
+                    "request": "AddSocietyWithContact",
+                    "description": "Add a new society with contact",
+                    "content": {
+                        "application\/json": {
+                            "schema": {
+                                "$ref": "#\/components\/schemas\/AddSocietyWithContact"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Create a new society with an administrator",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "$ref": "#\/components\/schemas\/SocietyCreatedWithAdministrator"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AddSocietyWithContact": {
+                "required": [
+                    "society_name",
+                    "last_name"
+                ],
+                "properties": {
+                    "society_name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "gender": {
+                        "type": "string",
+                        "enum": [
+                            "male",
+                            "female",
+                            "other"
+                        ]
+                    },
+                    "last_name": {
+                        "type": "string"
+                    },
+                    "first_name": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "phone_number": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "SocietyCreatedWithAdministrator": {
+                "properties": {
+                    "society_uuid": {
+                        "type": "string"
+                    },
+                    "administrator_uuid": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}

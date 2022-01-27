@@ -1,0 +1,77 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Do not use \"else/elseif\"\\. Refactor to early return$#"
+			count: 1
+			path: src/Billing/Legacy/CartService.php
+
+		-
+			message: "#^Service \"Th3Mouk\\\\SimpleAPI\\\\Billing\\\\Legacy\\\\TaxProvider\" is not registered in the container\\.$#"
+			count: 1
+			path: src/Billing/Legacy/CartService.php
+
+		-
+			message: "#^Useless @throws Psr\\\\Container\\\\NotFoundExceptionInterface annotation$#"
+			count: 1
+			path: src/Billing/Legacy/CartService.php
+
+		-
+			message: "#^Property Th3Mouk\\\\SimpleAPI\\\\Customer\\\\Entity\\\\Customer\\:\\:\\$email is never read, only written\\.$#"
+			count: 1
+			path: src/Customer/Entity/Customer.php
+
+		-
+			message: "#^Property Th3Mouk\\\\SimpleAPI\\\\Customer\\\\Entity\\\\Customer\\:\\:\\$firstName is never read, only written\\.$#"
+			count: 1
+			path: src/Customer/Entity/Customer.php
+
+		-
+			message: "#^Property Th3Mouk\\\\SimpleAPI\\\\Customer\\\\Entity\\\\Customer\\:\\:\\$gender is never read, only written\\.$#"
+			count: 1
+			path: src/Customer/Entity/Customer.php
+
+		-
+			message: "#^Property Th3Mouk\\\\SimpleAPI\\\\Customer\\\\Entity\\\\Customer\\:\\:\\$lastName is never read, only written\\.$#"
+			count: 1
+			path: src/Customer/Entity/Customer.php
+
+		-
+			message: "#^Property Th3Mouk\\\\SimpleAPI\\\\Customer\\\\Entity\\\\Customer\\:\\:\\$phoneNumber is never read, only written\\.$#"
+			count: 1
+			path: src/Customer/Entity/Customer.php
+
+		-
+			message: "#^Property Th3Mouk\\\\SimpleAPI\\\\Customer\\\\Entity\\\\Customer\\:\\:\\$roles is never read, only written\\.$#"
+			count: 1
+			path: src/Customer/Entity/Customer.php
+
+		-
+			message: "#^Property Th3Mouk\\\\SimpleAPI\\\\Customer\\\\Entity\\\\Customer\\:\\:\\$uuid is never read, only written\\.$#"
+			count: 1
+			path: src/Customer/Entity/Customer.php
+
+		-
+			message: "#^Property Th3Mouk\\\\SimpleAPI\\\\Customer\\\\Entity\\\\Society\\:\\:\\$name is never read, only written\\.$#"
+			count: 1
+			path: src/Customer/Entity/Society.php
+
+		-
+			message: "#^Property Th3Mouk\\\\SimpleAPI\\\\Customer\\\\Entity\\\\Society\\:\\:\\$uuid is never read, only written\\.$#"
+			count: 1
+			path: src/Customer/Entity/Society.php
+
+		-
+			message: "#^Doctrine\\\\ORM\\\\Exception\\\\ORMException is never thrown in the corresponding try block$#"
+			count: 1
+			path: src/Persistence/Doctrine/ServiceEntityRepository.php
+
+		-
+			message: "#^Type mixed in generic type Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository\\<mixed\\> in PHPDoc tag @extends is not subtype of template type TEntityClass of object of class Doctrine\\\\Bundle\\\\DoctrineBundle\\\\Repository\\\\ServiceEntityRepository\\.$#"
+			count: 1
+			path: src/Persistence/Doctrine/ServiceEntityRepository.php
+
+		-
+			message: "#^Parameter \\#1 \\$format of method FOS\\\\RestBundle\\\\View\\\\View\\:\\:setFormat\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Symfony/EventListener/PartialDenormalizationListener.php
+

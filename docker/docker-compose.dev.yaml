@@ -1,0 +1,31 @@
+version: "3.8"
+
+# Development environment override
+services:
+  php:
+    build:
+      context: ./..
+      target: php_fpm_dev
+    volumes:
+      - ./..:/app:rw,cached
+    # - ./php/php.dev.ini:/usr/local/etc/php/conf.d/php-custom.ini
+    # if you develop on Linux, you may use a bind-mounted host directory instead
+    # - var:/app/var:rw
+    environment:
+      APP_ENV: dev
+      # See https://docs.docker.com/docker-for-mac/networking/#i-want-to-connect-from-a-container-to-a-service-on-the-host
+      # See https://github.com/docker/for-linux/issues/264
+      # The `remote_host` below may optionally be replaced with `remote_connect_back`
+      # XDEBUG_MODE required for step debugging
+      XDEBUG_MODE: debug
+      # default port for Xdebug 3 is 9003
+      # idekey=VSCODE if you are debugging with VSCode
+      XDEBUG_CONFIG: >-
+        client_host=host.docker.internal
+        idekey=PHPSTORM
+      # This should correspond to the server declared in PHPStorm `Preferences | Languages & Frameworks | PHP | Servers`
+      # Then PHPStorm will use the corresponding path mappings
+      PHP_IDE_CONFIG: serverName=qb-api
+  web:
+    volumes:
+      - ./nginx/dev/api.conf:/etc/nginx/conf.d/default.conf

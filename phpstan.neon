@@ -1,0 +1,48 @@
+includes:
+  - phpstan-baseline.neon
+
+parameters:
+  checkMissingIterableValueType: false
+  level: 8
+  paths:
+    - config
+    - src
+  exceptionRules:
+    uncheckedExceptions:
+      - LogicException
+      - InvalidArgumentException
+  doctrine:
+#    repositoryClass: MyApp\Doctrine\BetterEntityRepository
+    objectManagerLoader: tests/doctrine-object-manager.php
+  symfony:
+    console_application_loader: tests/console-application.php
+    container_xml_path: var/cache/dev/Th3Mouk_SimpleAPI_Symfony_KernelDevDebugContainer.xml
+  scanDirectories:
+    - var/cache/dev/Symfony/Config
+  ignoreErrors:
+    - '#Missing @throws Safe\\Exceptions\\StringsException annotation#'
+#    -
+#      message: "#^Missing @throws InvalidArgumentException annotation$#"
+#      paths:
+#        - **/Controller/**
+
+services:
+  -
+    class: Symplify\PHPStanRules\CognitiveComplexity\Rules\FunctionLikeCognitiveComplexityRule
+    tags: [phpstan.rules.rule]
+    arguments:
+      maxMethodCognitiveComplexity: 5
+  -
+    class: Symplify\PHPStanRules\CognitiveComplexity\Rules\ClassLikeCognitiveComplexityRule
+    tags: [phpstan.rules.rule]
+    arguments:
+      maxClassCognitiveComplexity: 10
+  -
+    class: Symplify\PHPStanRules\ObjectCalisthenics\Rules\NoShortNameRule
+    tags: [phpstan.rules.rule]
+    arguments:
+      minNameLength: 3
+      allowedShortNames: ['id']
+  -
+    class: Symplify\PHPStanRules\ObjectCalisthenics\Rules\NoElseAndElseIfRule
+    tags: [phpstan.rules.rule]

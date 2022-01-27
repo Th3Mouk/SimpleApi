@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/squizlabs/php_codesniffer/phpcs.xsd">
+
+    <arg name="basepath" value="."/>
+    <arg name="cache" value=".phpcs-cache"/>
+    <arg name="colors"/>
+    <arg name="extensions" value="php"/>
+
+    <rule ref="PSR12"/>
+
+    <file>config/</file>
+    <file>public/</file>
+    <file>src/</file>
+    <file>tests/</file>
+
+    <!-- Include full Doctrine Coding Standard -->
+    <rule ref="Doctrine">
+        <exclude name="SlevomatCodingStandard.ControlStructures.AssignmentInCondition"/>
+        <exclude name="Squiz.Commenting.FunctionComment.ThrowsNoFullStop"/>
+    </rule>
+
+    <rule ref="Squiz.Arrays.ArrayDeclaration.DoubleArrowNotAligned">
+        <severity>5</severity>
+        <exclude-pattern>config/</exclude-pattern>
+    </rule>
+
+    <rule ref="Generic.Formatting.SpaceAfterNot">
+        <properties>
+            <property name="spacing" value="0" />
+        </properties>
+    </rule>
+
+    <rule ref="SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly">
+        <properties>
+            <property name="allowFallbackGlobalConstants" value="true"/>
+            <property name="allowFallbackGlobalFunctions" value="true"/>
+            <property name="allowFullyQualifiedGlobalClasses" value="true"/>
+            <property name="allowFullyQualifiedGlobalConstants" value="true"/>
+            <property name="allowFullyQualifiedGlobalFunctions" value="true"/>
+        </properties>
+    </rule>
+
+    <rule ref="Squiz.Strings.DoubleQuoteUsage">
+        <exclude name="Squiz.Strings.DoubleQuoteUsage.ContainsVar"/>
+    </rule>
+
+    <rule ref="SlevomatCodingStandard.Functions.StaticClosure">
+        <exclude-pattern>tests/</exclude-pattern>
+    </rule>
+
+</ruleset>
